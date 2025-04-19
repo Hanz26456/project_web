@@ -23,34 +23,29 @@
      DASHDADDY
     </h1>
    </div>
-   <form class="space-y-6">
+   <form method="POST" action="{{ url('/secure-area/login') }}" class="space-y-6">
+    @csrf
+
+    @if ($errors->any())
+        <div class="text-red-500 text-sm">
+            {{ $errors->first() }}
+        </div>
+    @endif
+
     <div class="relative">
-     <i class="fas fa-user absolute left-3 top-1/2 -translate-y-1/2 text-gray-300">
-     </i>
-     <input class="w-full border-b border-gray-200 py-2 pl-10 pr-3 text-gray-400 placeholder-gray-400 focus:outline-none focus:border-[#7BC6C6]" placeholder="Username" type="text"/>
+        <i class="fas fa-user absolute left-3 top-1/2 -translate-y-1/2 text-gray-300"></i>
+        <input name="username" value="{{ old('username') }}" class="w-full ..." placeholder="Username" type="text" />
     </div>
     <div class="relative">
-     <i class="fas fa-lock absolute left-3 top-1/2 -translate-y-1/2 text-gray-300">
-     </i>
-     <input class="w-full border-b border-gray-200 py-2 pl-10 pr-10 text-gray-400 placeholder-gray-400 focus:outline-none focus:border-[#7BC6C6]" placeholder="Password" type="password"/>
-     <i class="fas fa-eye-slash absolute right-3 top-1/2 -translate-y-1/2 text-gray-300">
-     </i>
+        <i class="fas fa-lock absolute left-3 top-1/2 -translate-y-1/2 text-gray-300"></i>
+        <input name="password" class="w-full ..." placeholder="Password" type="password" />
+        <i class="fas fa-eye-slash absolute right-3 top-1/2 -translate-y-1/2 text-gray-300"></i>
     </div>
-    <div class="flex items-center justify-between text-sm">
-     <label class="flex items-center space-x-2 text-black">
-      <input class="w-4 h-4 border border-gray-300 rounded text-[#7BC6C6] focus:ring-0" type="checkbox"/>
-      <span>
-       Remember me
-      </span>
-     </label>
-     <a class="text-[#4A90E2] hover:underline" href="#">
-      Forgot password?
-     </a>
-    </div>
-    <button class="w-full py-3 border-2 border-[#7BC6C6] rounded-full text-black font-semibold text-sm hover:bg-[#7BC6C6] hover:text-white transition" type="submit">
-     LOGIN
+
+    <button type="submit" class="w-full py-3 ...">
+        LOGIN
     </button>
-   </form>
+</form>
   </main>
  </body>
 </html>

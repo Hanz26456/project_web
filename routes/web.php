@@ -8,4 +8,6 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
-Route::get('/secure-area/login', [AuthController::class, 'login']);
+Route::get('/secure-area/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/secure-area/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
